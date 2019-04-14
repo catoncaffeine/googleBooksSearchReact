@@ -31,3 +31,17 @@
     transform: rotate(360deg);
   }
 }
+.searchBar {
+
+}
+
+.searchInput {
+  width: 80%
+}
+
+.searchResults {
+  height: 100px;
+  border: 1px solid black;
+  overflow-y: scroll;
+}
+
