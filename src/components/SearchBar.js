@@ -11,6 +11,7 @@ export default class SearchBar extends Component {
                     onChange={this.props.handleKeywordChange}
                 />
                 <button
+                    className="searchButton"
                     onClick={this.props.searchAction}
                 >
                     Search!

@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 
 export default class SearchResults extends Component {
-    renderBook(book, index) {
+    renderBook(item, index) {
         return(
           <li key={index}>
-              {book.volumeInfo.title}
+              <span className="bookIndex">
+                  {index}
+              </span>
+              <span className="bookTitle">
+                  {item.volumeInfo.title}
+              </span>
           </li>
         );
     }
@@ -23,7 +28,9 @@ export default class SearchResults extends Component {
                     className="searchResults"
                     onScroll={this.handleScroll}
                 >
-                    <ol>
+                    <ol
+                        className="bookList"
+                    >
                         {
                             this.props.books.map((book, index) => {
                                 return this.renderBook(book, index);
@@ -34,6 +41,6 @@ export default class SearchResults extends Component {
             );
         }
 
-        return "";
+        return null;
     }
 }

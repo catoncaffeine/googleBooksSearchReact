@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
-import Loader from "./components/Loader";
+import Logo from "./components/Logo";
 
 class App extends Component {
     constructor(props) {
@@ -31,13 +31,11 @@ class App extends Component {
 
     async fetchBooks() {
         if(!this.state.fetchingBooks) {
-            let url = new URL("https://www.googleapis.com/books/v1/volumes");
-            url.search = new URLSearchParams({
-                q: this.state.keyword,
-                key: "AIzaSyD0RewGs-7f9r5G-pkg7NWnNJ2QnPe6Gqk",
-                startingIndex: this.state.books.length,
-                maxResults: 40
-            });
+            const query = `q=${this.state.keyword}`;
+            const key = `key=AIzaSyD0RewGs-7f9r5G-pkg7NWnNJ2QnPe6Gqk`;
+            const startingIndex = `startingIndex=${this.state.books.length}`;
+            const maxResults = `maxResults=${40}`;
+            const url = `https://www.googleapis.com/books/v1/volumes?${query}&${key}&${startingIndex}&${maxResults}`;
 
             this.setState({
                 fetchingBooks: true,
@@ -48,6 +46,7 @@ class App extends Component {
             fetch(url)
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 this.setState({
                     books: [ ...this.state.books, ...data.items],
                     fetchingBooks: false,
@@ -73,17 +72,17 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-            <SearchBar
-                keyword={this.state.keyword}
-                handleKeywordChange={this.handleKeywordChange}
-                searchAction={this.searchAction}
-            />
-            <SearchResults
-                books={this.state.books}
-                fetchBooks={this.fetchBooks}
-            />
-            <Loader loading={this.state.fetchingBooks} />
+            <div className="searchApp">
+                <Logo loading={this.state.fetchingBooks} />
+                <SearchBar
+                    keyword={this.state.keyword}
+                    handleKeywordChange={this.handleKeywordChange}
+                    searchAction={this.searchAction}
+                />
+                <SearchResults
+                    books={this.state.books}
+                    fetchBooks={this.fetchBooks}
+                />
             </div>
         );
     }
