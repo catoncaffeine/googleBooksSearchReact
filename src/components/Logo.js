@@ -23,7 +23,6 @@ export default class Logo extends Component{
         this.setState({
             rotate: false
         });
-        clearTimeout(this.stopRotation);
     };
 
     render() {
