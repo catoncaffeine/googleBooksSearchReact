@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/googleBooksSearch.iml" filepath="$PROJECT_DIR$/.idea/googleBooksSearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/googleBooksSearchReact.iml" filepath="$PROJECT_DIR$/.idea/googleBooksSearchReact.iml" />
     </modules>
   </component>
 </project>

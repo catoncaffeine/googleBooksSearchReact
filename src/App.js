@@ -32,7 +32,7 @@ class App extends Component {
     async fetchBooks() {
         if(!this.state.fetchingBooks) {
             const query = `q=${this.state.keyword}`;
-            const key = `key=AIzaSyD0RewGs-7f9r5G-pkg7NWnNJ2QnPe6Gqk`;
+            const key = `key=your own google api key, see readme for more details`;
             const startingIndex = `startingIndex=${this.state.books.length}`;
             const maxResults = `maxResults=${40}`;
             const url = `https://www.googleapis.com/books/v1/volumes?${query}&${key}&${startingIndex}&${maxResults}`;
